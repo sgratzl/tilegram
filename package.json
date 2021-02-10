@@ -1,7 +1,7 @@
 {
-  "name": "tilegram-cli",
+  "name": "tilegram",
   "description": "TODO",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -11,16 +11,16 @@
     "url": "https://www.sgratzl.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/sgratzl/tilegram-cli",
+  "homepage": "https://github.com/sgratzl/tilegram",
   "bugs": {
-    "url": "https://github.com/sgratzl/tilegram-cli/issues"
+    "url": "https://github.com/sgratzl/tilegram/issues"
   },
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sgratzl/tilegram-cli.git"
+    "url": "https://github.com/sgratzl/tilegram.git"
   },
-  "global": "TilegramCli",
+  "global": "Tilegram",
   "dependencies": {
     "@turf/bbox": "^6.3.0",
     "@turf/bbox-polygon": "^6.3.0",
