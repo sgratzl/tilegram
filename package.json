@@ -1,5 +1,5 @@
 {
-  "name": "ts-library-template",
+  "name": "tilegram-cli",
   "description": "TODO",
   "version": "2.0.0",
   "publishConfig": {
@@ -11,16 +11,16 @@
     "url": "https://www.sgratzl.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/sgratzl/ts-library-template",
+  "homepage": "https://github.com/sgratzl/tilegram-cli",
   "bugs": {
-    "url": "https://github.com/sgratzl/ts-library-template/issues"
+    "url": "https://github.com/sgratzl/tilegram-cli/issues"
   },
   "keywords": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sgratzl/ts-library-template.git"
+    "url": "https://github.com/sgratzl/tilegram-cli.git"
   },
-  "global": "TSLibrary",
+  "global": "TilegramCli",
   "dependencies": {
     "@types/d3-array": "^2.9.0",
     "d3-array": "^2.11.0"
