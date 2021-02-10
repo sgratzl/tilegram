@@ -4,7 +4,7 @@
  */
 import type { Point, Dimension, Shape } from './interfaces';
 
-export default class PointyTopHexagonShape implements Shape {
+export class PointyTopHexagonShape implements Shape {
   /** Return tile maximum dimensions, point-to-point, given edge */
   getTileSize(tileEdge: number): Dimension {
     return {

@@ -1769,13 +1769,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-array@npm:^2.9.0":
-  version: 2.9.0
-  resolution: "@types/d3-array@npm:2.9.0"
-  checksum: 6422177cd9f4de36b6dfd4258c3db1d96b6882544f6ff28b910a0d61386bbb95c79305d4bbf507534388edfced75ad6a2985dd237fe5a020b6d211099ac60504
-  languageName: node
-  linkType: hard
-
 "@types/d3-geo@npm:^2.0.0":
   version: 2.0.0
   resolution: "@types/d3-geo@npm:2.0.0"
@@ -1951,16 +1944,6 @@ __metadata:
   version: 2.0.0
   resolution: "@types/stack-utils@npm:2.0.0"
   checksum: 662312302e07685c99a1c45c6753eb997b31d2af66e646c5937f62d593a63a111289503d0b06a8d1e6f3922b67fc2ed94889d84653a08861a7fee67b81ce5b92
-  languageName: node
-  linkType: hard
-
-"@types/topojson-client@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@types/topojson-client@npm:3.0.0"
-  dependencies:
-    "@types/geojson": "*"
-    "@types/topojson-specification": "*"
-  checksum: 63b4a74cc04aef448e1e18abd8abbfebe1d5e75651ae652019b99d6e6c8c51c5349bb72d2afadff2804a306d86dcefb66423cfe8606f0c59960c0547981d387c
   languageName: node
   linkType: hard
 
@@ -2425,6 +2408,13 @@ __metadata:
     delegates: ^1.0.0
     readable-stream: ^2.0.6
   checksum: 2d6fdb0ddde9b8cb120b6851b42c75f6b6db78b540b579a00d144ad38cb9e1bdf1248e5454049fcf5b47ef61d1a6f2ea433a8e38984158afd441bc1e0db7a625
+  languageName: node
+  linkType: hard
+
+"arg@npm:^4.1.0":
+  version: 4.1.3
+  resolution: "arg@npm:4.1.3"
+  checksum: 81b3b40b1529c4fbf75b12f7c3e6fb2dcce9e78072063babc169de9b4f40777788f3d2b04380f659ef676a756e03ccfbfe78adf4477353bda906295fa69dab89
   languageName: node
   linkType: hard
 
@@ -3352,6 +3342,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"create-require@npm:^1.1.0":
+  version: 1.1.1
+  resolution: "create-require@npm:1.1.1"
+  checksum: babd307893abfb26d77ae11cb9d6b6cfa6d18c9cee435cf70b5a3fb44aa8d90c9ec26ea89cbb16e0a94b8d34f5fcaee164b90ed526cdd3158955673ab9652d01
+  languageName: node
+  linkType: hard
+
 "cross-spawn@npm:7.0.3, cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.2, cross-spawn@npm:^7.0.3":
   version: 7.0.3
   resolution: "cross-spawn@npm:7.0.3"
@@ -3406,12 +3403,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-array@npm:>=2.5, d3-array@npm:^2.11.0":
+"d3-array@npm:1, d3-array@npm:^1.1.1":
+  version: 1.2.4
+  resolution: "d3-array@npm:1.2.4"
+  checksum: ab114c72ccdcb3f53807574c003816ad6ac65c2c2db2b17b18e2678f1141881dfa0ddab60af63d73e428c826e4580b6cb9e93cb776c777c79fec9f75057d8fbd
+  languageName: node
+  linkType: hard
+
+"d3-array@npm:>=2.5":
   version: 2.11.0
   resolution: "d3-array@npm:2.11.0"
   dependencies:
     internmap: ^1.0.0
   checksum: d58eb9c53fcbcb896ec3c67b5eae0f752450baa0b3f382e0a4981823ac3f5fe11688174ab8b626579330e643971cb06f3b73aa4ccb5697cc861d76f7989d6ca0
+  languageName: node
+  linkType: hard
+
+"d3-color@npm:1":
+  version: 1.4.1
+  resolution: "d3-color@npm:1.4.1"
+  checksum: a579fdc2f4ec50980e32d0ac5212c3023ee9c6a7555ae698278f05c9f7d06322f83dde01253f672f9f9fd05d8860f0256d25aee999a0d32cf4111d731413f5da
+  languageName: node
+  linkType: hard
+
+"d3-geo@npm:^1.6.3":
+  version: 1.12.1
+  resolution: "d3-geo@npm:1.12.1"
+  dependencies:
+    d3-array: 1
+  checksum: e0fe99d832e574d438db4638df11f726a85942e48f520d01074d2e3132ef07b3a60ffcb4ea8d41a70b089c6d4c70dc818237974621a6dec3db92908d1193441c
   languageName: node
   linkType: hard
 
@@ -3421,6 +3441,25 @@ __metadata:
   dependencies:
     d3-array: ">=2.5"
   checksum: 62c9953e654d84316b57e3b6079604be40a6ee5a107bbf37c2e3802791bea91eff46bc886ef89b9e34a38f17146f9a061000c6d438fee2e36e96d800d5f4a611
+  languageName: node
+  linkType: hard
+
+"d3-interpolate@npm:1":
+  version: 1.4.0
+  resolution: "d3-interpolate@npm:1.4.0"
+  dependencies:
+    d3-color: 1
+  checksum: beea08fb3a712ccb992082c058a96a108f31692bbcecbf8029539ff378747b666fd0f33798b313835a2cb019e399a30fd1f5b643822f1cc0be3c86b4fe4730c7
+  languageName: node
+  linkType: hard
+
+"d3-scale-chromatic@npm:^1.1.1":
+  version: 1.5.0
+  resolution: "d3-scale-chromatic@npm:1.5.0"
+  dependencies:
+    d3-color: 1
+    d3-interpolate: 1
+  checksum: 12f786b1b1d4c5eaa3f56f38b63832989f40f48d5ed0476325a0443af75d46824cab71b5b975e37cdd2f47a048d7db356f09364a7a5eea641cc81e3825ef996e
   languageName: node
   linkType: hard
 
@@ -3520,6 +3559,13 @@ __metadata:
   dependencies:
     mimic-response: ^3.1.0
   checksum: bb8b8c42be7767994764d27f91a3949e3dc9008da82f1aaeab1de40f1ebb50d7abf17b31b2e4000f8d267a1e75f76052efd58d4419124c04bf430e184c164fad
+  languageName: node
+  linkType: hard
+
+"deep-copy@npm:^1.2.0":
+  version: 1.4.2
+  resolution: "deep-copy@npm:1.4.2"
+  checksum: 70a0a0d32c477116626573fb595fe1edec2d88c0f88144cd5503bd9c5d988b9590ca2944719e0b2630424401a03cf62a24e79d474a6793e6df093bb52ab83aa6
   languageName: node
   linkType: hard
 
@@ -6571,7 +6617,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-error@npm:1.x":
+"make-error@npm:1.x, make-error@npm:^1.1.1":
   version: 1.3.6
   resolution: "make-error@npm:1.3.6"
   checksum: 2c780bab8409b865e8ee86697c599a2bf2765ec64d21eb67ccda27050e039f983feacad05a0d43aba3c966ea03d305d2612e94fec45474bcbc61181f57c5bb88
@@ -8515,7 +8561,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"source-map-support@npm:^0.5.6, source-map-support@npm:~0.5.19":
+"source-map-support@npm:^0.5.17, source-map-support@npm:^0.5.6, source-map-support@npm:~0.5.19":
   version: 0.5.19
   resolution: "source-map-support@npm:0.5.19"
   dependencies:
@@ -9036,17 +9082,14 @@ __metadata:
     "@rollup/plugin-node-resolve": ^11.1.1
     "@rollup/plugin-replace": ^2.3.4
     "@rollup/plugin-typescript": ^8.1.1
-    "@types/d3-array": ^2.9.0
     "@types/d3-geo": ^2.0.0
     "@types/geojson": ^7946.0.7
     "@types/jest": ^26.0.20
-    "@types/topojson-client": ^3.0.0
     "@types/topojson-server": ^3.0.0
     "@types/topojson-specification": ^1.0.1
     "@typescript-eslint/eslint-plugin": ^4.14.2
     "@typescript-eslint/parser": ^4.14.2
     "@yarnpkg/pnpify": ^2.4.0
-    d3-array: ^2.11.0
     d3-geo: ^2.0.1
     eslint: ^7.19.0
     eslint-config-prettier: ^7.2.0
@@ -9064,12 +9107,14 @@ __metadata:
     rollup: ^2.38.4
     rollup-plugin-dts: ^2.0.1
     rollup-plugin-terser: ^7.0.2
-    topojson-client: ^3.1.0
+    topogram: ^1.0.1
     topojson-server: ^3.0.1
     ts-jest: ^26.5.0
+    ts-node: ^9.1.1
     tslib: ^2.1.0
     typedoc: ^0.20.20
     typescript: ^4.1.3
+    us-atlas: ^3.0.0
   languageName: unknown
   linkType: soft
 
@@ -9143,7 +9188,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"topojson-client@npm:^3.1.0":
+"topogram@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "topogram@npm:1.0.1"
+  dependencies:
+    d3-array: ^1.1.1
+    d3-geo: ^1.6.3
+    d3-scale-chromatic: ^1.1.1
+    deep-copy: ^1.2.0
+    topojson-client: ^3.0.0
+  checksum: 679b7921ce3730674eb131fe98c4e011b6687642589c1e5c04c032e402390aa297557d09a93a5a7feff2c2eefd4d0457d3c019dea32bc94a8063f54292582243
+  languageName: node
+  linkType: hard
+
+"topojson-client@npm:^3.0.0":
   version: 3.1.0
   resolution: "topojson-client@npm:3.1.0"
   dependencies:
@@ -9225,6 +9283,27 @@ __metadata:
   bin:
     ts-jest: cli.js
   checksum: f054d4ef42740981688ebd5f314a864a8027ee2e02d2df4bfa7579148da59dda089224f2ea30ee16d9e919ec29fb50c5da953a6bd4573b6599c3aad46a2dd6cb
+  languageName: node
+  linkType: hard
+
+"ts-node@npm:^9.1.1":
+  version: 9.1.1
+  resolution: "ts-node@npm:9.1.1"
+  dependencies:
+    arg: ^4.1.0
+    create-require: ^1.1.0
+    diff: ^4.0.1
+    make-error: ^1.1.1
+    source-map-support: ^0.5.17
+    yn: 3.1.1
+  peerDependencies:
+    typescript: ">=2.7"
+  bin:
+    ts-node: dist/bin.js
+    ts-node-script: dist/bin-script.js
+    ts-node-transpile-only: dist/bin-transpile.js
+    ts-script: dist/bin-script-deprecated.js
+  checksum: a90db4a342872cd0e7a80babdfcb15d2f7c06e700d735003098f7cc79db575c3380580c58a19ae0d0eaab553af083651d4237060c92170e6f8ac4e64693113ea
   languageName: node
   linkType: hard
 
@@ -9529,6 +9608,13 @@ typescript@^4.1.3:
   dependencies:
     prepend-http: ^2.0.0
   checksum: 334817036b300c35023798b8ceac23ea61b51f231a867112e3a85778d65191a3ccb67e7b69b608d45433d55da392cf0d72cd3c85f2542f6ec34733e455c229d5
+  languageName: node
+  linkType: hard
+
+"us-atlas@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "us-atlas@npm:3.0.0"
+  checksum: babbbfce63cafc65a46ce42802b6f673c5417a768005f74c9cb055d36f2f28ad4d5b25814edff87d4c9174f64e154c36a03e500c8604e39ea3dc3737c75781d2
   languageName: node
   linkType: hard
 
@@ -9884,6 +9970,13 @@ typescript@^4.1.3:
     y18n: ^4.0.0
     yargs-parser: ^18.1.2
   checksum: dbf687d6b938f01bbf11e158dde6df906282b70cd9295af0217ee8cefbd83ad09d49fa9458d0d5325b0e66f03df954a38986db96f91e5b46ccdbbaf9a0157b23
+  languageName: node
+  linkType: hard
+
+"yn@npm:3.1.1":
+  version: 3.1.1
+  resolution: "yn@npm:3.1.1"
+  checksum: bff63b80568d80c711670935427494dde47cdf97e8b04196b140ce0af519c81c5ee857eddad0caa8b422dd65aea0157bbfaacbb1546bebba623f0f383d5d9ae5
   languageName: node
   linkType: hard
 

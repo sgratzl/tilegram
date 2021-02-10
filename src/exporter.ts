@@ -1,39 +1,29 @@
 import { topology } from 'topojson-server';
 import type { Feature, FeatureCollection } from 'geojson';
 import type { Topology } from 'topojson-specification';
-import type { Point } from './shapes/interfaces';
-import { tileCenterPoint, getPointsAround } from './geometry';
+import type { Index } from './shapes/interfaces';
+import type { Geometry } from './geometry';
+import type { TileGroup } from './interfaces';
 
-interface TileGroup {
-  id: string;
-  tiles: Tile[];
-  properties: Record<string, unknown>;
-  value: number;
-}
-
-interface Tile {
-  position: Point;
-}
-
-function toHexagonPoints(tile: Tile, maxTileY?: number) {
-  const center = tileCenterPoint({
-    x: tile.position.x,
-    y: maxTileY != null ? maxTileY - tile.position.y - (maxTileY % 2) : tile.position.y,
+function toHexagonPoints(geometry: Geometry, tile: Index, maxTileJ?: number) {
+  const center = geometry.tileCenterPoint({
+    i: tile.i,
+    j: maxTileJ != null ? maxTileJ - tile.j - (maxTileJ % 2) : tile.j,
   });
-  const hexagonPoints = getPointsAround(center);
+  const hexagonPoints = geometry.getPointsAround(center);
   hexagonPoints.push(hexagonPoints[0]); // loop
   return hexagonPoints;
 }
 
-export function toGeoJSON(tileGroups: readonly TileGroup[]): FeatureCollection {
-  const maxTileY = tileGroups.reduce(
-    (max, g) => g.tiles.reduce((acc, v) => Math.max(acc, v.position.y), max),
+export function toGeoJSON(tileGroups: readonly TileGroup[], geometry: Geometry): FeatureCollection {
+  const maxTileJ = tileGroups.reduce(
+    (max, g) => g.tiles.reduce((acc, v) => Math.max(acc, v.j), max),
     Number.NEGATIVE_INFINITY
   );
 
   const features = tileGroups.map((group) => {
-    const tilesCoordinates = group.tiles.map((tile) => toHexagonPoints(tile, maxTileY));
-    const geometry =
+    const tilesCoordinates = group.tiles.map((tile) => toHexagonPoints(geometry, tile, maxTileJ));
+    const geo =
       tilesCoordinates.length === 1
         ? {
             type: 'Polygon' as const,
@@ -42,10 +32,9 @@ export function toGeoJSON(tileGroups: readonly TileGroup[]): FeatureCollection {
         : { type: 'MultiPolygon' as const, coordinates: tilesCoordinates.map((t) => [t]) };
 
     const f: Feature = {
+      ...group.feature,
       type: 'Feature',
-      geometry,
-      id: group.id,
-      properties: group.properties,
+      geometry: geo,
     };
     return f;
   });
@@ -55,8 +44,8 @@ export function toGeoJSON(tileGroups: readonly TileGroup[]): FeatureCollection {
   };
 }
 
-export function toTopoJSON(tileGroups: readonly TileGroup[], objectName = 'tiles'): Topology {
-  const geo = toGeoJSON(tileGroups);
+export function toTopoJSON(tileGroups: readonly TileGroup[], geometry: Geometry, objectName = 'tiles'): Topology {
+  const geo = toGeoJSON(tileGroups, geometry);
 
   const topo = topology({ [objectName]: geo }, 1e10);
   // topo.properties = {
@@ -66,12 +55,12 @@ export function toTopoJSON(tileGroups: readonly TileGroup[], objectName = 'tiles
   return topo;
 }
 
-export function toSVG(tileGroups: readonly TileGroup[], width: number, height: number) {
+export function toSVG(tileGroups: readonly TileGroup[], geometry: Geometry, width: number, height: number) {
   return `<svg xmlns="http://www.w3.org/2000/svg'" width="${width}" height="${height}">
 ${tileGroups
   .map(
-    (group) => ` <g data-id="${group.id}">
-  ${group.tiles.map((tile) => `  <polygon points="${toHexagonPoints(tile).join(',')}" />`).join('\n')}
+    (group) => ` <g>
+  ${group.tiles.map((tile) => `  <polygon points="${toHexagonPoints(geometry, tile).join(',')}" />`).join('\n')}
 </g>`
   )
   .join('\n')}

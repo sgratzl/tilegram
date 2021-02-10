@@ -8,6 +8,11 @@ export interface Point {
   y: number;
 }
 
+export interface Index {
+  i: number;
+  j: number;
+}
+
 export interface Shape {
   /** Return tile maximum dimensions, point-to-point, given edge */
   getTileSize(tileEdge: number): Dimension;

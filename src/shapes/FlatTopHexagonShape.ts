@@ -5,7 +5,7 @@
 
 import type { Dimension, Shape, Point } from './interfaces';
 
-export default class FlatTopHexagonShape implements Shape {
+export class FlatTopHexagonShape implements Shape {
   /** Return tile maximum dimensions, point-to-point, given edge */
   getTileSize(tileEdge: number): Dimension {
     return {
