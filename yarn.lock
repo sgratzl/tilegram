@@ -1776,6 +1776,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/d3-geo@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@types/d3-geo@npm:2.0.0"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 911025ac67e97004d688eb5bf433289a75bfb539e788df7ea1630c702fe99f99e9547612e4ed529db2548cce9b492ab2881f24e106eb68d19c8f4972957ba3c9
+  languageName: node
+  linkType: hard
+
 "@types/emscripten@npm:^1.38.0":
   version: 1.39.4
   resolution: "@types/emscripten@npm:1.39.4"
@@ -1794,6 +1803,13 @@ __metadata:
   version: 0.0.39
   resolution: "@types/estree@npm:0.0.39"
   checksum: 43e5361de39969def145f32f4599391ab13055ec94841f1633a7cfe10f0e8a940ebf0e9a4b2770454a6bddd034b57e7e0d51a4d565cb2714ee2accf10a7718be
+  languageName: node
+  linkType: hard
+
+"@types/geojson@npm:*, @types/geojson@npm:^7946.0.7":
+  version: 7946.0.7
+  resolution: "@types/geojson@npm:7946.0.7"
+  checksum: b0a614f58a169069d9978af24c4b816bc7140a722829d8786ad1ff22d8362b429c56170326c836ce661a0307f8e35820a055966c2eedc21b62671a56c472263e
   languageName: node
   linkType: hard
 
@@ -1935,6 +1951,35 @@ __metadata:
   version: 2.0.0
   resolution: "@types/stack-utils@npm:2.0.0"
   checksum: 662312302e07685c99a1c45c6753eb997b31d2af66e646c5937f62d593a63a111289503d0b06a8d1e6f3922b67fc2ed94889d84653a08861a7fee67b81ce5b92
+  languageName: node
+  linkType: hard
+
+"@types/topojson-client@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/topojson-client@npm:3.0.0"
+  dependencies:
+    "@types/geojson": "*"
+    "@types/topojson-specification": "*"
+  checksum: 63b4a74cc04aef448e1e18abd8abbfebe1d5e75651ae652019b99d6e6c8c51c5349bb72d2afadff2804a306d86dcefb66423cfe8606f0c59960c0547981d387c
+  languageName: node
+  linkType: hard
+
+"@types/topojson-server@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "@types/topojson-server@npm:3.0.0"
+  dependencies:
+    "@types/geojson": "*"
+    "@types/topojson-specification": "*"
+  checksum: 3495db94e6a1a33008d2799a30e7305865eeece6ec8101d36246769724f5956eff6eec233adf8241936b6d6bb57014a82adc74d7d09e790e4dd28794bda1e95a
+  languageName: node
+  linkType: hard
+
+"@types/topojson-specification@npm:*, @types/topojson-specification@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@types/topojson-specification@npm:1.0.1"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: eb62972ac57839585134546584bbdae196dc9b656f371252d42495961a19509700f25874a2f8e75b9ec66107b9b5dc0f15f7980444373792d6c4395069482539
   languageName: node
   linkType: hard
 
@@ -3179,7 +3224,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"commander@npm:^2.20.0":
+"commander@npm:2, commander@npm:^2.20.0":
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
   checksum: b73428e97de7624323f81ba13f8ed9271de487017432d18b4da3f07cfc528ad754bbd199004bd5d14e0ccd67d1fdfe0ec8dbbd4c438b401df3c4cc387bfd1daa
@@ -3361,12 +3406,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-array@npm:^2.11.0":
+"d3-array@npm:>=2.5, d3-array@npm:^2.11.0":
   version: 2.11.0
   resolution: "d3-array@npm:2.11.0"
   dependencies:
     internmap: ^1.0.0
   checksum: d58eb9c53fcbcb896ec3c67b5eae0f752450baa0b3f382e0a4981823ac3f5fe11688174ab8b626579330e643971cb06f3b73aa4ccb5697cc861d76f7989d6ca0
+  languageName: node
+  linkType: hard
+
+"d3-geo@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "d3-geo@npm:2.0.1"
+  dependencies:
+    d3-array: ">=2.5"
+  checksum: 62c9953e654d84316b57e3b6079604be40a6ee5a107bbf37c2e3802791bea91eff46bc886ef89b9e34a38f17146f9a061000c6d438fee2e36e96d800d5f4a611
   languageName: node
   linkType: hard
 
@@ -8971,6 +9025,54 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tilegram-cli@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "tilegram-cli@workspace:."
+  dependencies:
+    "@babel/core": ^7.12.13
+    "@babel/preset-env": ^7.12.13
+    "@rollup/plugin-babel": ^5.2.3
+    "@rollup/plugin-commonjs": ^17.1.0
+    "@rollup/plugin-node-resolve": ^11.1.1
+    "@rollup/plugin-replace": ^2.3.4
+    "@rollup/plugin-typescript": ^8.1.1
+    "@types/d3-array": ^2.9.0
+    "@types/d3-geo": ^2.0.0
+    "@types/geojson": ^7946.0.7
+    "@types/jest": ^26.0.20
+    "@types/topojson-client": ^3.0.0
+    "@types/topojson-server": ^3.0.0
+    "@types/topojson-specification": ^1.0.1
+    "@typescript-eslint/eslint-plugin": ^4.14.2
+    "@typescript-eslint/parser": ^4.14.2
+    "@yarnpkg/pnpify": ^2.4.0
+    d3-array: ^2.11.0
+    d3-geo: ^2.0.1
+    eslint: ^7.19.0
+    eslint-config-prettier: ^7.2.0
+    eslint-config-react-app: ^6.0.0
+    eslint-plugin-flowtype: ^5.2.0
+    eslint-plugin-import: ^2.22.1
+    eslint-plugin-jsx-a11y: ^6.4.1
+    eslint-plugin-prettier: ^3.3.1
+    eslint-plugin-react: ^7.22.0
+    eslint-plugin-react-hooks: ^4.2.0
+    jest: ^26.6.3
+    prettier: ^2.2.1
+    release-it: ^14.3.0
+    rimraf: ^3.0.2
+    rollup: ^2.38.4
+    rollup-plugin-dts: ^2.0.1
+    rollup-plugin-terser: ^7.0.2
+    topojson-client: ^3.1.0
+    topojson-server: ^3.0.1
+    ts-jest: ^26.5.0
+    tslib: ^2.1.0
+    typedoc: ^0.20.20
+    typescript: ^4.1.3
+  languageName: unknown
+  linkType: soft
+
 "tmp@npm:^0.0.33":
   version: 0.0.33
   resolution: "tmp@npm:0.0.33"
@@ -9041,6 +9143,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"topojson-client@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "topojson-client@npm:3.1.0"
+  dependencies:
+    commander: 2
+  bin:
+    topo2geo: bin/topo2geo
+    topomerge: bin/topomerge
+    topoquantize: bin/topoquantize
+  checksum: 189471a7436a511aae95ad21a078e2b46dbe50f9efd80321935455983bb9859155011b865d61ca4f0f57d34e97db7811a3be943c96c39ab58cd82c76a849f618
+  languageName: node
+  linkType: hard
+
+"topojson-server@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "topojson-server@npm:3.0.1"
+  dependencies:
+    commander: 2
+  bin:
+    geo2topo: bin/geo2topo
+  checksum: 37d14ecf2d99f830d5b853cd09742be29f37ea326bc9b7215c480cabe276812301de0240d25eb53d0e0032db8b6b7a12a81df40b09e38c73478d619b7d08801a
+  languageName: node
+  linkType: hard
+
 "tough-cookie@npm:^2.3.3, tough-cookie@npm:~2.5.0":
   version: 2.5.0
   resolution: "tough-cookie@npm:2.5.0"
@@ -9101,46 +9227,6 @@ __metadata:
   checksum: f054d4ef42740981688ebd5f314a864a8027ee2e02d2df4bfa7579148da59dda089224f2ea30ee16d9e919ec29fb50c5da953a6bd4573b6599c3aad46a2dd6cb
   languageName: node
   linkType: hard
-
-"ts-library-template@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "ts-library-template@workspace:."
-  dependencies:
-    "@babel/core": ^7.12.13
-    "@babel/preset-env": ^7.12.13
-    "@rollup/plugin-babel": ^5.2.3
-    "@rollup/plugin-commonjs": ^17.1.0
-    "@rollup/plugin-node-resolve": ^11.1.1
-    "@rollup/plugin-replace": ^2.3.4
-    "@rollup/plugin-typescript": ^8.1.1
-    "@types/d3-array": ^2.9.0
-    "@types/jest": ^26.0.20
-    "@typescript-eslint/eslint-plugin": ^4.14.2
-    "@typescript-eslint/parser": ^4.14.2
-    "@yarnpkg/pnpify": ^2.4.0
-    d3-array: ^2.11.0
-    eslint: ^7.19.0
-    eslint-config-prettier: ^7.2.0
-    eslint-config-react-app: ^6.0.0
-    eslint-plugin-flowtype: ^5.2.0
-    eslint-plugin-import: ^2.22.1
-    eslint-plugin-jsx-a11y: ^6.4.1
-    eslint-plugin-prettier: ^3.3.1
-    eslint-plugin-react: ^7.22.0
-    eslint-plugin-react-hooks: ^4.2.0
-    jest: ^26.6.3
-    prettier: ^2.2.1
-    release-it: ^14.3.0
-    rimraf: ^3.0.2
-    rollup: ^2.38.4
-    rollup-plugin-dts: ^2.0.1
-    rollup-plugin-terser: ^7.0.2
-    ts-jest: ^26.5.0
-    tslib: ^2.1.0
-    typedoc: ^0.20.20
-    typescript: ^4.1.3
-  languageName: unknown
-  linkType: soft
 
 "tsconfig-paths@npm:^3.9.0":
   version: 3.9.0
