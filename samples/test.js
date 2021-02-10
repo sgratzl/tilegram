@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { geoIdentity } = require('d3-geo');
-const us = require('us-atlas/states-albers-10m.json');
-const { tilegramTopology } = require('../build/index.umd.js');
+const { geoAlbersUsa } = require('d3-geo');
+const us = require('./us-110m.topo.json');
+const { tilegramTopology, toTransformedSVG } = require('../build/index.umd.js');
 const fs = require('fs');
 
 const out = tilegramTopology(
@@ -13,9 +13,13 @@ const out = tilegramTopology(
   {
     canvasWidth: 975,
     canvasHeight: 610,
-    projection: geoIdentity(),
+    iterations: 10,
+    tileScaleFactor: 0.75,
+    projection: geoAlbersUsa().scale(1300).translate([487.5, 305]),
   }
 );
 
 fs.writeFileSync('./test.topo.json', JSON.stringify(out.toTopoJSON()));
-fs.writeFileSync('./test.topo.svg', out.toSVG());
+fs.writeFileSync('./test.svg', out.toSVG());
+fs.writeFileSync('./transformed.geo.json', JSON.stringify(out.transformed));
+fs.writeFileSync('./transformed.svg', toTransformedSVG(out.transformed));

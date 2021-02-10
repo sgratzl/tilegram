@@ -1,4 +1,7 @@
-import { geoAlbersUsa, geoBounds, geoContains, geoMercator, geoPath, GeoProjection } from 'd3-geo';
+import bbox from '@turf/bbox';
+import bboxPolygon from '@turf/bbox-polygon';
+import booleanPointInPolygon from '@turf/boolean-point-in-polygon';
+import { geoAlbersUsa, geoPath, GeoProjection } from 'd3-geo';
 import type { Feature, FeatureCollection } from 'geojson';
 import { cartogram } from 'topogram/index.js';
 import type { GeometryCollection, Topology } from 'topojson-specification';
@@ -18,6 +21,7 @@ export interface TilegramTopoplogyOptions {
 
 export interface TileGramResult {
   tiles: TileGroup[];
+  transformed: FeatureCollection;
   toTopoJSON(): Topology;
   toGeoJSON(): FeatureCollection;
   toSVG(): string;
@@ -48,6 +52,10 @@ export function tilegramTopology(
   const lookup = createContainsPointLookup(transformed);
   const tiles = geo.assignTiles(canvas, lookup);
   return {
+    transformed: {
+      type: 'FeatureCollection',
+      features: transformed.features,
+    },
     tiles,
     toTopoJSON: () => toTopoJSON(tiles, geo, objectId),
     toGeoJSON: () => toGeoJSON(tiles, geo),
@@ -60,7 +68,7 @@ export function loadTransformedProjectedTopology(
   valueFn: (d: Feature) => number,
   {
     objectId = 'states',
-    projection = geoMercator(),
+    projection,
     iterations = 8,
   }: {
     objectId?: string;
@@ -71,7 +79,9 @@ export function loadTransformedProjectedTopology(
   const c = cartogram();
   c.iterations(iterations);
   c.value(valueFn);
-  c.projection(projection);
+  if (projection) {
+    c.projection(projection);
+  }
   c.properties((d) => d.properties ?? {});
   const r = c(topology, (topology.objects[objectId] as GeometryCollection).geometries);
   return {
@@ -92,41 +102,17 @@ export function computeArea(collection: FeatureCollection) {
   return featureAreas.reduce((a, b) => a + b);
 }
 
-// /** Find feature that contains given point */
-// export function getFeatureAtPoint(collection: FeatureCollection, point: Point) {
-//   const pointDimensions = [point.x, point.y];
-
-//   collection.features.find((d) => {});
-//   // for each feature: check if point is within bounds, then within path
-//   return this._stateFeatures.features.find((feature, featureIndex) => {
-//     const bounds = this._projectedStates[featureIndex].bounds;
-//     if (!checkWithinBounds(pointDimensions, bounds || this._generalBounds)) {
-//       return false;
-//     }
-//     const matchingPath = this._projectedStates[featureIndex].paths.find((path) => inside(pointDimensions, path[0]));
-//     return matchingPath != null;
-//   });
-// }
-
-function inBounds(bounds: [[number, number], [number, number]], { x, y }: Point) {
-  // [[left, bottom], [right, top]]
-  if (x < bounds[0][0] || x > bounds[1][0] || y < bounds[0][1] || y > bounds[1][1]) {
-    return false;
-  }
-  return true;
-}
-
 export function createContainsPointLookup(collection: FeatureCollection) {
-  const bounds = geoBounds(collection);
-  const boundsPerFeature = collection.features.map((feature) => geoBounds(feature));
+  const bb = bboxPolygon(bbox(collection));
+  const boundsPerFeature = collection.features.map((feature) => bboxPolygon(bbox(feature)));
   return (point: Point): Feature | undefined | null => {
-    const p: [number, number] = [point.x, point.y];
-    if (!inBounds(bounds, point)) {
+    const p = [point.x, point.y];
+    if (!booleanPointInPolygon(p, bb)) {
       return null;
     }
     return collection.features.find((d, i) => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      return inBounds(boundsPerFeature[i], point) && geoContains(d as any, p);
+      return booleanPointInPolygon(p, boundsPerFeature[i]) && booleanPointInPolygon(p, d.geometry as any);
     });
   };
 }

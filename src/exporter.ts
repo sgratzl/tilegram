@@ -4,6 +4,7 @@ import type { Topology } from 'topojson-specification';
 import type { Index } from './shapes/interfaces';
 import type { Geometry } from './geometry';
 import type { TileGroup } from './interfaces';
+import { geoPath } from 'd3-geo';
 
 function toHexagonPoints(geometry: Geometry, tile: Index, maxTileJ?: number) {
   const center = geometry.tileCenterPoint({
@@ -56,13 +57,21 @@ export function toTopoJSON(tileGroups: readonly TileGroup[], geometry: Geometry,
 }
 
 export function toSVG(tileGroups: readonly TileGroup[], geometry: Geometry, width: number, height: number) {
-  return `<svg xmlns="http://www.w3.org/2000/svg'" width="${width}" height="${height}">
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
 ${tileGroups
   .map(
-    (group) => ` <g>
+    (group) => ` <g data-id="${group.feature.id}">
+    <title>${group.feature.properties?.name}</title>
   ${group.tiles.map((tile) => `  <polygon points="${toHexagonPoints(geometry, tile).join(',')}" />`).join('\n')}
 </g>`
   )
   .join('\n')}
+</svg>`;
+}
+
+export function toTransformedSVG(features: FeatureCollection, width: number, height: number) {
+  const path = geoPath().projection(null);
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">
+${features.features.map((f) => `<path d="${path(f)}" />`).join('\n')}
 </svg>`;
 }

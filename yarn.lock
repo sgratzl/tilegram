@@ -1716,6 +1716,60 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@turf/bbox-polygon@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@turf/bbox-polygon@npm:6.3.0"
+  dependencies:
+    "@turf/helpers": ^6.3.0
+  checksum: 82d249bd8cbda30458b102c0b86ca8d2d1e1b56d5ac9a66062b19781727ae1466eb2d5cb031733ccfe82dacd52b7e89e0b2a259fb0c830d8ba03628a3e7d47c0
+  languageName: node
+  linkType: hard
+
+"@turf/bbox@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@turf/bbox@npm:6.3.0"
+  dependencies:
+    "@turf/helpers": ^6.3.0
+    "@turf/meta": ^6.3.0
+  checksum: e28c2f7ab6ee0e22dac4aba1e9d60530de61c0d87285b8cf3819cca0875a19bad9330861c7717b025f63e9535892a96375f689beb97306ab7c2cba8c20c5ecfe
+  languageName: node
+  linkType: hard
+
+"@turf/boolean-point-in-polygon@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@turf/boolean-point-in-polygon@npm:6.3.0"
+  dependencies:
+    "@turf/helpers": ^6.3.0
+    "@turf/invariant": ^6.3.0
+  checksum: 4948b1a9deb504df09f133ef56091ef33fb10a68039eb164ed1f2f8997dfdcd92fab55c5baf4a660644772e99c91ed92d857708a03f31ec0556415eb33ac5185
+  languageName: node
+  linkType: hard
+
+"@turf/helpers@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@turf/helpers@npm:6.3.0"
+  checksum: be72e760e86e831e50dafbf3a1aacd94c188e8cb69b5b67e4dbea0fe17c3065f0f1e35c08c24e7b40594f8c38d1595e9eb1d0749452efe4fb12525c3e81ea78c
+  languageName: node
+  linkType: hard
+
+"@turf/invariant@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@turf/invariant@npm:6.3.0"
+  dependencies:
+    "@turf/helpers": ^6.3.0
+  checksum: e140fa10003937360b12e812ee822d3270d63d21df58a938b6e3525d446346f407b4dfa97d2b9aac23d2d47d2495b3ac491142259fb43da57728df3e728b2bbb
+  languageName: node
+  linkType: hard
+
+"@turf/meta@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "@turf/meta@npm:6.3.0"
+  dependencies:
+    "@turf/helpers": ^6.3.0
+  checksum: 149f613cb03d9131bb612d3cd6c0436611e47428865eda4c40440b47ed9222728fb5bcf9acca8604fc6059030b10b17f75f1e3729afb6e1b23e6723458e837d0
+  languageName: node
+  linkType: hard
+
 "@types/babel__core@npm:^7.0.0, @types/babel__core@npm:^7.1.7":
   version: 7.1.12
   resolution: "@types/babel__core@npm:7.1.12"
@@ -9082,6 +9136,9 @@ __metadata:
     "@rollup/plugin-node-resolve": ^11.1.1
     "@rollup/plugin-replace": ^2.3.4
     "@rollup/plugin-typescript": ^8.1.1
+    "@turf/bbox": ^6.3.0
+    "@turf/bbox-polygon": ^6.3.0
+    "@turf/boolean-point-in-polygon": ^6.3.0
     "@types/d3-geo": ^2.0.0
     "@types/geojson": ^7946.0.7
     "@types/jest": ^26.0.20
